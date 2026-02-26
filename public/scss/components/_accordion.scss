@@ -1,189 +1,201 @@
-// NOTE: This file contains Accordion SCSS.
+// Variables (تأكد إنها متعرفة عندك أو عرفها هنا)
+$font-md: 16px;
+$font-medium: 600;
+$theme-color: #28a745; // الأخضر
+$dark-gray: #333;
+$lightest-gray: #f7f7f7;
+$white: #fff;
+$border-color: #ddd;
+$line-md: 1.5;
 
+// Accordion Base
 .accordion { 
   .acd-group { 
-	.acd-heading { 
-		font-weight: $font-medium; 
-		font-size: $font-md; 
-		position: relative; 
-		padding: 12px 0; 
-		color: $dark-gray; 
-		line-height: normal; 
-		cursor: pointer; 
-		background-color: transparent; 
-		margin-bottom: 0px; 
-		display: block; 
-		border-radius: 3px;
+    .acd-heading { 
+      font-weight: $font-medium; 
+      font-size: $font-md; 
+      position: relative; 
+      padding: 12px 20px; 
+      color: $dark-gray; 
+      line-height: normal; 
+      cursor: pointer; 
+      background-color: transparent; 
+      margin-bottom: 0; 
+      display: block; 
+      border-radius: 3px;
 
-		&:before { 
-			font-family: fontawesome;
-			cursor: pointer; 
-			position: absolute; 
-			top: 12px; 
-			right: 20px; 
-			display: block; 
-			padding: 3px 6px 2px; 
-			content: "\f105"; 
-			font-size: $font-md; 
-			line-height: $line-md ;
-		 }
-		 &:hover { 
-		 	color: $theme-color;
-		 }
-		 }
-	 .acd-des { 
-	 	   padding: 0 20px 20px 0;
-	   }
-	  }
-	 .acd-active { 
-	  .acd-heading {
-	    	color: $theme-color;
+      &:before { 
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900;
+        position: absolute; 
+        top: 12px; 
+        right: 20px; 
+        content: "\f105"; // سهم لليمين
+        font-size: $font-md; 
+        line-height: $line-md;
+      }
 
-	    &:before { 
-	        content: "\f107";
-	     }	
-	 	}
-	   }
-	}
+      &:hover { 
+        color: $theme-color;
+      }
+    }
 
-/*plus-icon*/
+    .acd-des { 
+      padding: 0 20px 20px 20px;
+      display: none; // الافتراضي مقفول
+    }
+  }
+
+  .acd-group.acd-active { 
+    .acd-heading {
+      color: $theme-color;
+      &:before { 
+        content: "\f107"; // سهم لتحت
+      }	
+    }
+
+    .acd-des {
+      display: block; // يفتح وقت التفعيل
+    }
+  }
+}
+
+/* plus-icon */
 .accordion.plus-icon { 
+  .acd-group { 
+    .acd-heading {
+      background-color: $lightest-gray;
+      color: $dark-gray;
 
- .acd-group.acd-active { 
-	
-	.acd-heading { 
-		
-		&:before { 
-			 content: "\f068"; 
-			 font-size:  $font-md;
-		 }
-	    }
-	 }
-	 .acd-group  { 
-		.acd-heading { 
-				
-			&:before { 
-				content: "\f067"; 
-				font-size:  $font-md; 
-			 }
-			
-		 }
-	  }
- }
+      &:before { 
+        content: "\f105"; // سهم يمين
+      }
 
-/*plus-icon.round*/
+      &:hover { 
+        color: $theme-color;
+      }
+    }
+
+    &.acd-active { 
+      .acd-heading {
+        color: $white;
+        background: $theme-color;
+        &:before { 
+          content: "\f107"; // سهم لتحت
+        }
+      }
+    }
+  }
+}
+
+/* plus-icon.round */
 .accordion.plus-icon.round { 
-	.acd-group.acd-active { 
-		.acd-heading { 
-			&:before { 
-				content: "\f056"; 
-				font-size:  $font-md;
-			 }
-		 }
-	 }	
+  .acd-group { 
+    .acd-heading {
+      &:before { 
+        content: "\f055"; // زائد +
+        font-size: $font-md;
+      }
+    }
 
-	 .acd-group { 
-		.acd-heading{
-			&:before { 
-				content: "\f055"; 
-				font-size: $font-md;
-			}
-		}
-	  }
- }
+    &.acd-active { 
+      .acd-heading { 
+        &:before { 
+          content: "\f056"; // ناقص -
+          font-size: $font-md;
+        }
+      }
+    }
+  }
+}
 
-/*gray*/
+/* gray */
 .accordion.gray {
-	.acd-heading { 
-		background-color: $lightest-gray;
-		margin-bottom: 20px; 
-		padding: 12px 24px;
+  .acd-group {
+    .acd-heading { 
+      background-color: $lightest-gray;
+      margin-bottom: 20px; 
+      padding: 12px 24px;
 
-		&:hover { 
-			   color: $white;	
-			   background: $theme-color;	
-			 }
-	 }	
-	 .acd-des { 
-	 	padding: 0 30px 20px; 
-	 }
+      &:hover { 
+        color: $white;	
+        background: $theme-color;	
+      }
+    }
 
-	 .acd-group.acd-active { 
-			.acd-heading { 
-			   color: $white;	
-			   background: $theme-color;	
-			 }
-	  }
+    .acd-des { 
+      padding: 0 30px 20px; 
+    }
+
+    &.acd-active { 
+      .acd-heading { 
+        color: $white;	
+        background: $theme-color;	
+      }
+    }
+  }
 }
  
-/*shadow*/
+/* shadow */
 .accordion.shadow { 
-	  .acd-heading { 
-	 	background: $white;
-	 	@include box-shadow(0px, 5px, 10px, rgba(0, 0, 0, 0.1));
-	 	margin-bottom: 20px;
-	 	padding: 12px 24px;
-	  }
+  .acd-group {
+    .acd-heading { 
+      background: $white;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 12px 24px;
 
-	  .acd-des  { 
-	  	padding: 0 30px 20px; 
-	  }
+      &:hover { 
+        color: $white;	
+        background: $theme-color;
+      }
+    }
 
-	  .acd-group.acd-active {
-		.acd-heading { 
-			color: $white;	
-			background: $theme-color;
-		 }
-	  }
+    .acd-des { 
+      padding: 0 30px 20px; 
+    }
 
-	  .acd-group {
-	   .acd-heading { 
-
-	   	&:hover { 
-	    	color: $white;	
-			background: $theme-color;
-		  }
-	    }
-	 }	
+    &.acd-active {
+      .acd-heading { 
+        color: $white;	
+        background: $theme-color;
+      }
+    }
+  }
 }
 
-
-/*border*/
+/* border */
 .accordion.accordion-border { 
-	  .acd-heading { 
-	 	background: transparent; 
-	 	border:1px solid $border-color; 
-	 	box-shadow: none;
-	 	margin-bottom: 20px;
-	 	padding: 12px 24px;
-	  }
-	  .acd-des  { 
-	  	padding: 0 30px 20px; 
-	  }
+  .acd-group {
+    .acd-heading { 
+      background: transparent; 
+      border:1px solid $border-color; 
+      box-shadow: none;
+      margin-bottom: 20px;
+      padding: 12px 24px;
 
-	  .acd-group.acd-active {
-		.acd-heading { 
-			color: $white;	
-			background: $theme-color;
-		 }
-	  }
+      &:hover { 
+        color: $white;	
+        background: $theme-color;
+      }
+    }
 
-	  .acd-group {
-	   .acd-heading { 
+    .acd-des { 
+      padding: 0 30px 20px; 
+    }
 
-	   	&:hover { 
-	    	color: $white;	
-			background: $theme-color;
-		  }
-	    }
-	 }	
+    &.acd-active {
+      .acd-heading { 
+        color: $white;	
+        background: $theme-color;
+      }
+    }
+  }
 }
 
-/*no-radius*/
+/* no-radius */
 .accordion.no-radius { 
-	.acd-heading { 
-		border-radius: 0; 
-	}	
+  .acd-heading { 
+    border-radius: 0; 
+  }	
 }
- 
- 

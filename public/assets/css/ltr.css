@@ -20095,7 +20095,7 @@ ul.list-unstyled li {
     margin-left: 20px; }
     .admin-header.navbar .navbar-brand-wrapper .navbar-brand img {
       max-width: 100%;
-      margin: auto; }
+      margin-left: 40px; }
   .admin-header.navbar .navbar-brand-wrapper .brand-logo-mini {
     display: none; }
 

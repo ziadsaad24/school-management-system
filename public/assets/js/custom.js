@@ -262,29 +262,42 @@ POTENZA.fancyselect = function () {
   /*************************
       Accordion
 *************************/
-  POTENZA.accordion = function () {
+POTENZA.accordion = function () {
+  $('.accordion').each(function () {
+    var $elem = $(this),
+        $acpanel = $elem.find(".acd-group > .acd-des"),
+        $acsnav  = $elem.find(".acd-group > .acd-heading");
 
-    $('.accordion').each(function (i, elem) {
-       var $elem = $(this),
-           $acpanel = $elem.find(".acd-group > .acd-des"),
-           $acsnav =  $elem.find(".acd-group > .acd-heading");
-          $acpanel.hide().first().slideDown("easeOutExpo");
-          $acsnav.first().parent().addClass("acd-active");
-          $acsnav.on('click', function () {
-            if(!$(this).parent().hasClass("acd-active")){
-              var $this = $(this).next(".acd-des");
-              $acsnav.parent().removeClass("acd-active");
-              $(this).parent().addClass("acd-active");
-              $acpanel.not($this).slideUp("easeInExpo");
-              $(this).next().slideDown("easeOutExpo");
-            }else{
-               $(this).parent().removeClass("acd-active");
-               $(this).next().slideUp("easeInExpo");
-            }
-            return false;
-        });
-      });
-  } 
+    // نقفل الكل في البداية
+    $acpanel.hide();
+    $acsnav.removeClass("acd-active");
+
+    $acsnav.on('click', function () {
+      var $this = $(this);
+      var $thisPanel = $this.next(".acd-des");
+
+      if (!$this.hasClass("acd-active")) {
+        // اقفل بس جوة نفس الاكوردين الحالي
+        $elem.find(".acd-heading").removeClass("acd-active");
+        $elem.find(".acd-des").slideUp(400);
+
+        // افتح الحالي
+        $this.addClass("acd-active");
+        $thisPanel.slideDown(400);
+      } else {
+        // لو ضغطت على المفتوح → يتقفل
+        $this.removeClass("acd-active");
+        $thisPanel.slideUp(400);
+      }
+
+      return false;
+    });
+  });
+}
+
+
+
+
 
 /*************************
        Search
